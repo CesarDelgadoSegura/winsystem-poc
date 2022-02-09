@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Globalization } from '@awesome-cordova-plugins/globalization/ngx';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private globalization: Globalization) {
+    this.globalization.getPreferredLanguage()
+    .then(res => console.log(res))
+    .catch(e => console.log(e));
+  }
 }
