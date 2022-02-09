@@ -17,7 +17,7 @@
       <ion-col size="12">
         <ion-label>
           <b>
-            Otra información
+            {{ "details" | translate }}
           </b>
         </ion-label>
       </ion-col>
@@ -25,7 +25,7 @@
         <ion-list>
           <ion-item>
             <ion-label>
-              Cantidad de Comics disponibles
+              {{ "amount_comics" | translate }}
             </ion-label>
             <ion-note slot="end">
               {{ character.comics.available }}
@@ -33,7 +33,7 @@
           </ion-item>
           <ion-item>
             <ion-label>
-              Cantidad de Series disponibles
+              {{ "amount_series" | translate }}
             </ion-label>
             <ion-note slot="end">
               {{ character.series.available }}
@@ -41,7 +41,7 @@
           </ion-item>
           <ion-item>
             <ion-label>
-              Cantidad de Stories disponibles
+              {{ "amount_stories" | translate }}
             </ion-label>
             <ion-note slot="end">
               {{ character.stories.available }}
