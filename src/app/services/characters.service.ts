@@ -8,17 +8,25 @@ import { Md5 } from 'ts-md5';
 })
 export class CharactersService {
   constructor(private http: HttpClient, private md5: Md5) {}
+
   get() {
+    return this.http.get(`${environment.apiUrl}characters`, this.getBody()).toPromise();
+  }
+
+  getCharacter(id: number){
+    return this.http.get(`${environment.apiUrl}characters/${id}`, this.getBody()).toPromise();
+  }
+
+  getBody() {
+    const md5 = new Md5();
     const time = Math.floor(Date.now() / 1000);
-    const md5 = (this.md5.appendStr(`${time}${environment.privateKey}${environment.publicKey}`).end() as string);
-    const body = {
+    const md5Parsed = (md5.appendStr(`${time}${environment.privateKey}${environment.publicKey}`).end() as string);
+    return {
       params: {
         apikey: environment.publicKey,
         ts: time,
-        hash: md5
+        hash: md5Parsed
       }
     };
-
-    return this.http.get(`${environment.apiUrl}characters`, body).toPromise();
   }
 }
